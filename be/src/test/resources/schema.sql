@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS orders (
     payment_type  int      NOT NULL,
     payment_price bigint   NOT NULL,
     total_price   bigint,
-    change        bigint,
+    remain        bigint,
     order_at      datetime NOT NULL,
     order_number  bigint,
     PRIMARY KEY(id)
