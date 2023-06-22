@@ -23,6 +23,17 @@ enum Temperature {
 export default function CartAdditionModal({ menu, handleBackdropClick }: CartAdditionModalProps) {
   const [size, setSize] = useState<Size>(Size.UNCHECKED);
   const [temperature, setTemperature] = useState<Temperature>(Temperature.UNCHECKED);
+  const [quantity, setQuantity] = useState(1);
+
+  const handlePlusButtonClick = () => {
+    setQuantity((q) => q + 1);
+  };
+
+  const handleMinusButtonClick = () => {
+    if (quantity > 1) {
+      setQuantity((q) => q - 1);
+    }
+  };
 
   return (
     <div className={style.ModalContainer}>
@@ -59,11 +70,37 @@ export default function CartAdditionModal({ menu, handleBackdropClick }: CartAdd
                 onClick={() => setTemperature(Temperature.ICE)}
               />
             </div>
-            <div className={style.MenuItemOption}></div>
+            <div className={style.MenuItemOption}>
+              <QuantityCounter
+                quantity={quantity}
+                handlePlusButtonClick={handlePlusButtonClick}
+                handleMinusButtonClick={handleMinusButtonClick}
+              />
+            </div>
           </div>
         </div>
         {/* Add menu button */}
       </div>
     </div>
+  );
+}
+
+interface QuantityCounterProps {
+  quantity: number;
+  handlePlusButtonClick: () => void;
+  handleMinusButtonClick: () => void;
+}
+
+function QuantityCounter({ quantity, handlePlusButtonClick, handleMinusButtonClick }: QuantityCounterProps) {
+  return (
+    <>
+      <button className={style.CounterController} onClick={handleMinusButtonClick}>
+        -
+      </button>
+      <span className={style.Counter}>{quantity}</span>
+      <button className={style.CounterController} onClick={handlePlusButtonClick}>
+        +
+      </button>
+    </>
   );
 }
