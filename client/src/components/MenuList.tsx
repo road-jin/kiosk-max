@@ -11,7 +11,9 @@ export default function MenuList({ menus, handleMenuItemClick }: MenuListProps) 
     <main className={`${style.MenuList} ${style.AnimateIn}`}>
       <ul className={style.MenuListContainer}>
         {menus.map((menu) => (
-          <MenuItem key={menu.id} menu={menu} handleMenuItemClick={handleMenuItemClick} />
+          <li className={style.MenuItem} onClick={() => handleMenuItemClick(menu)}>
+            <MenuItem key={menu.id} menu={menu} />
+          </li>
         ))}
       </ul>
     </main>

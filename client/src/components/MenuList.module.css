@@ -41,3 +41,13 @@
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 100px;
 }
+
+.MenuItem {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.MenuItem:hover {
+  cursor: pointer;
+}

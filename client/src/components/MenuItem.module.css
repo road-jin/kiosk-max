@@ -1,9 +1,0 @@
-.MenuItem {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
-.MenuItem:hover {
-  cursor: pointer;
-}

@@ -4,9 +4,10 @@ interface OptionButtonProps {
   type: "Size" | "Temperature" | "Payment";
   text: string;
   isSelected?: boolean;
+  onClick: () => void;
 }
 
-export default function OptionButton({ type, text, isSelected }: OptionButtonProps) {
+export default function OptionButton({ type, text, isSelected, onClick }: OptionButtonProps) {
   let className;
   switch (type) {
     case "Size":
@@ -25,7 +26,7 @@ export default function OptionButton({ type, text, isSelected }: OptionButtonPro
   }
 
   return (
-    <div className={className}>
+    <div className={className} onClick={onClick}>
       <span className={style.Text}>{text}</span>
     </div>
   );
