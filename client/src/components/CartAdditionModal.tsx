@@ -8,18 +8,6 @@ interface CartAdditionModalProps {
   handleBackdropClick: () => void;
 }
 
-enum Size {
-  UNCHECKED,
-  BIG,
-  SMALL,
-}
-
-enum Temperature {
-  UNCHECKED,
-  HOT,
-  ICE,
-}
-
 export default function CartAdditionModal({ menu, handleBackdropClick }: CartAdditionModalProps) {
   const [size, setSize] = useState<Size>(Size.UNCHECKED);
   const [temperature, setTemperature] = useState<Temperature>(Temperature.UNCHECKED);

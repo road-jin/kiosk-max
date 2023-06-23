@@ -3,6 +3,7 @@ import style from "./App.module.css";
 import CartAdditionModal from "./components/CartAdditionModal";
 import CategoryTab from "./components/CategoryTab";
 import MenuList from "./components/MenuList";
+import Cart from "./components/Cart";
 
 interface Beverage {
   category: string;
@@ -79,6 +80,7 @@ export default function App() {
         animation={animation}
       />
       {isCartAdditionModalOpen && <CartAdditionModal menu={selectedMenu} handleBackdropClick={handleBackdropClick} />}
+      <Cart />
     </div>
   );
 }
