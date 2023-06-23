@@ -1,11 +1,11 @@
-name: spring-developer deploy
+name: kiosk
 
 on:
     pull_request:
         types:
             - assigned
         branches:
-            - main
+            - release
 
 permissions:
     contents: read
@@ -30,33 +30,33 @@ jobs:
                   java-version: '11'
                   distribution: 'corretto'
 
-            - name: Set up Node.js
-              uses: actions/setup-node@v3
-              with:
-                  node-version: 18
-
-            - name: [BE] Create application-prodDB.yml
+            - name: Create application-prodDB.yml
               run: touch ${{ env.APPLICATION_PROD_DB_FILE_PATH }}
               shell: bash
             - run: echo "${{ secrets.APPLICATION_PROD_DB }}" > ${{ env.APPLICATION_PROD_DB_FILE_PATH }}
               shell: bash
 
-            - name: [BE] Grant execute gradlew
+            - name: Grant execute gradlew
               run: chmod +x ./gradlew
               shell: bash
               working-directory: ./be
 
-            - name: [BE] Build gradle
+            - name: Build gradle
               run: ./gradlew clean build
               shell: bash
               working-directory: ./be
 
-            - name: [FE] Install npm
+            - name: Set up Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 18
+
+            - name: Install npm
               run: npm install
               shell: bash
               working-directory: ./client
 
-            - name: [FE] Build npm
+            - name: Build npm
               run: npm run build
               shell: bash
               working-directory: ./client
