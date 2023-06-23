@@ -14,6 +14,6 @@ else
 fi
 
 echo "> 애플리케이션을 실행합니다."
-nohup java -jar $REPOSITORY/build/libs/$JAR_NAME > 2>&1 &
+nohup java -jar $REPOSITORY/build/libs/$JAR_NAME > $REPOSITORY/log.txt 2>&1 &
 
 sudo systemctl restart nginx

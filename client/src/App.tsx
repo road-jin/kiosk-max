@@ -29,7 +29,7 @@ export default function App() {
 
     async function fetchBeveragesData() {
       try {
-        const res = await fetch("http://localhost:3001/beverages");
+        const res = await fetch("http://localhost:8080/api/categories");
         const data = await res.json();
 
         if (!ignore) {

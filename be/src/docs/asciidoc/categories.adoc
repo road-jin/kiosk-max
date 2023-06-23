@@ -1,4 +1,4 @@
-# 게시판 API
+# Kiosk API
 :icons: font
 :source-highlighter: highlightjs
 :toc: left
