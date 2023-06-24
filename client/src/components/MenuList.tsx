@@ -1,6 +1,6 @@
-import { AnimationClass } from "../App";
+import { AnimationClass } from "../types/constants";
 import MenuItem from "./MenuItem";
-import style from "./MenuList.module.css";
+import styles from "./MenuList.module.css";
 
 interface MenuListProps {
   menus: Menu[];
@@ -10,10 +10,10 @@ interface MenuListProps {
 
 export default function MenuList({ menus, handleMenuItemClick, animation }: MenuListProps) {
   return (
-    <main className={`${style.MenuList} ${style[animation]}`}>
-      <ul className={style.MenuListContainer}>
+    <main className={`${styles.MenuList} ${styles[animation]}`}>
+      <ul className={styles.MenuListContainer}>
         {menus.map((menu) => (
-          <li className={style.MenuItem} key={menu.id} onClick={() => handleMenuItemClick(menu)}>
+          <li className={styles.MenuItem} key={menu.id} onClick={() => handleMenuItemClick(menu)}>
             <MenuItem menu={menu} />
           </li>
         ))}

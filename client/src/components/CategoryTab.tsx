@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import style from "./CategoryTab.module.css";
+import styles from "./CategoryTab.module.css";
 
 interface CategoryTabProps {
   categories: string[];
@@ -57,13 +57,13 @@ export default function CategoryTab({ categories, currentCategoryIndex, handleCa
 
   return (
     <nav
-      className={style.Tab}
+      className={styles.Tab}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <ul className={style.TabContainer} style={scrollableStyle} ref={tabContainerRef}>
+      <ul className={styles.TabContainer} style={scrollableStyle} ref={tabContainerRef}>
         {categories.map((category, index) => {
           const isCurrentCategory = index === currentCategoryIndex;
 
@@ -90,7 +90,7 @@ interface TabItemProps {
 }
 
 function TabItem({ name, isCurrentCategory, handleCategoryChange }: TabItemProps) {
-  const tabItemClass = isCurrentCategory ? style.CurrentTabItem : style.TabItem;
+  const tabItemClass = isCurrentCategory ? styles.CurrentTabItem : styles.TabItem;
   return (
     <li className={tabItemClass} onClick={handleCategoryChange}>
       {name}

@@ -1,4 +1,4 @@
-import style from "./OptionButton.module.css";
+import styles from "./OptionButton.module.css";
 
 interface OptionButtonProps {
   type: "Size" | "Temperature" | "Payment";
@@ -11,23 +11,23 @@ export default function OptionButton({ type, text, isSelected, onClick }: Option
   let className;
   switch (type) {
     case "Size":
-      className = style.Size;
+      className = styles.Size;
       break;
     case "Temperature":
-      className = style.Temperature;
+      className = styles.Temperature;
       break;
     case "Payment":
-      className = style.Payment;
+      className = styles.Payment;
       break;
   }
 
   if (isSelected) {
-    className += " " + style.Selected;
+    className += " " + styles.Selected;
   }
 
   return (
     <div className={className} onClick={onClick}>
-      <span className={style.Text}>{text}</span>
+      <span className={styles.Text}>{text}</span>
     </div>
   );
 }
