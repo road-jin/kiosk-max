@@ -5,7 +5,7 @@ interface MenuProps {
 export default function MenuItem({ menu }: MenuProps) {
   return (
     <>
-      <img src={menu.src} alt={menu.name} />
+      <img src={menu.imageSrc} alt={menu.name} />
       <span>{menu.name}</span>
       <span>{menu.price}</span>
       {menu.isPopular && <PopularMark />}

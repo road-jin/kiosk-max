@@ -1,42 +1,23 @@
 interface PaymentModalProps {
-  handleCardPaymentButtonClick: () => void;
-  handleCashPaymentButtonClick: () => void;
+  selectCardPayment: () => void;
+  selectCashPayment: () => void;
 }
 
-export function PaymentModal({}: PaymentModalProps) {
-
-  return (
-
-  );
-}
+export function PaymentModal({ selectCardPayment, selectCashPayment }: PaymentModalProps) {}
 
 interface PaymentSpinnerProps {
-  text: string;
   requestPayment: () => void;
 }
 
-export function PaymentSpinner({ text, requestPayment }: PaymentSpinnerProps) {
-  return
+export function PaymentSpinner({ requestPayment }: PaymentSpinnerProps) {
+  return;
 }
 
 interface CashPaymentModalProps {
-  price: number;
+  totalPrice: number;
   requestPayment: () => void;
 }
 
-export function CashPaymentModal({ price, requestPayment }: CashPaymentModalProps) {
+export function CashPaymentModal({ totalPrice, requestPayment }: CashPaymentModalProps) {
   // 투입 얼마했는지 상태
-  
-}
-
-interface ReceiptProps {
-  menus: (Menu & { quantity: number })[]
-  inputAmount: number;
-  totalPrice: number;
-  change: number;
-  paymentType: "현금" | "카드";
-}
-
-export function Receipt({ menus }: ReceiptProps) {
-  
 }
