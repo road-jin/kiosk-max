@@ -19,7 +19,7 @@ export default function Main({ menus, animation, changePage }: MainProps) {
     setIsMenuAddModalOpen(true);
   };
 
-  const closeMenuAddModal = () => {
+  const closeModal = () => {
     setIsMenuAddModalOpen(false);
   };
 
@@ -44,8 +44,8 @@ export default function Main({ menus, animation, changePage }: MainProps) {
   return (
     <>
       <MenuList menus={menus} handleMenuItemClick={handleMenuItemClick} animation={animation} />
-      {isMenuAddModalOpen && (
-        <MenuAddModal menu={selectedMenu} closeMenuAddModal={closeMenuAddModal} addMenuToCart={addMenuToCart} />
+      {isMenuAddModalOpen && selectedMenu && (
+        <MenuAddModal menu={selectedMenu} closeModal={closeModal} addMenuToCart={addMenuToCart} />
       )}
       {/* <Cart /> */}
     </>
