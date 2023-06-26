@@ -18,7 +18,6 @@ insert into menu (category_id, name, price, image_src, create_at) values (8L, '�
 insert into menu (category_id, name, price, image_src, create_at) values (2L, '카페라떼', 10000, 'https://google.com', now());
 insert into menu (category_id, name, price, image_src, create_at) values (3L, '보이차', 1000000, 'https://google.com', now());
 
-
 insert into menu_rank (menu_id, sell_at) values (1L, now());
 insert into menu_rank (menu_id, sell_at) values (1L, now());
 insert into menu_rank (menu_id, sell_at) values (1L, now());

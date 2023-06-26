@@ -3,7 +3,6 @@ package kr.codesquad.kioskmax.repository;
 import java.util.List;
 
 import javax.sql.DataSource;
-
 import kr.codesquad.kioskmax.annotation.RepositoryTest;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
