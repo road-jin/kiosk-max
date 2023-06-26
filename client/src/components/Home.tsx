@@ -3,6 +3,7 @@ import styles from "./Home.module.css";
 import CategoryTab from "./CategoryTab";
 import Main from "./Main";
 import { AnimationClass } from "../types/constants";
+import { API_URL } from "../constants";
 
 interface HomeProps {
   changePage: (path: Path) => void;
@@ -26,7 +27,7 @@ export default function Home({ changePage }: HomeProps) {
 
     async function fetchBeveragesData() {
       try {
-        const res = await fetch("http://localhost:3001/beverages");
+        const res = await fetch(`${API_URL}/beverages`);
         const data = await res.json();
 
         if (!ignore) {
