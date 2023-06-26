@@ -46,6 +46,8 @@ export default function Main({ menus, animation, changePage }: MainProps) {
     setCartItems([]);
   };
 
+  const removeItem = () => {};
+
   return (
     <>
       <MenuList menus={menus} handleMenuItemClick={handleMenuItemClick} animation={animation} />
@@ -53,7 +55,7 @@ export default function Main({ menus, animation, changePage }: MainProps) {
         <MenuAddModal menu={selectedMenu} closeModal={closeModal} addMenuToCart={addMenuToCart} />
       )}
       {cartItems.length !== 0 && (
-        <Cart cartItems={cartItems} removeItem={() => {}} changePage={changePage} removeAllItems={removeAllItems} />
+        <Cart cartItems={cartItems} removeItem={removeItem} removeAllItems={removeAllItems} changePage={changePage} />
       )}
     </>
   );

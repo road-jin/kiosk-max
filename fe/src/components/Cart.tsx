@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { PaymentSelectionModal } from "./Payment";
 import styles from "./Cart.module.css";
+import Modal from "./Modal";
 
 interface CartProps {
   cartItems: CartItem[];
@@ -9,6 +11,7 @@ interface CartProps {
 }
 
 export default function Cart({ cartItems, removeItem, removeAllItems, changePage }: CartProps) {
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
   const [isRemoveAllItemsModalOpen, setIsRemoveAllItemsModalOpen] = useState(false);
 
   const openRemoveAllItemsModal = () => {
@@ -19,7 +22,6 @@ export default function Cart({ cartItems, removeItem, removeAllItems, changePage
     setIsRemoveAllItemsModalOpen(false);
   };
 
-  // 결제 수단 고르는 모달
   // 카드결제 눌렀을 때 로딩인디케이터 띄우는 함수
   // 현금결제 눌렀을 때 현금결제 모달 띄우는 함수
 
@@ -29,11 +31,23 @@ export default function Cart({ cartItems, removeItem, removeAllItems, changePage
     if (sameItem) {
       sameItem.count += cartItem.count;
     } else {
-      acc.push({...cartItem});
+      acc.push({ ...cartItem });
     }
 
     return acc;
-  } , []);
+  }, []);
+
+  const openPaymentSelectionModal = () => {
+    setIsPaymentModalOpen(true);
+  };
+
+  const closePaymentSelectionModal = () => {
+    setIsPaymentModalOpen(false);
+  };
+
+  const selectCardPayment = () => {};
+
+  const selectCashPayment = () => {};
 
   return (
     <section className={styles.Cart}>
@@ -48,16 +62,24 @@ export default function Cart({ cartItems, removeItem, removeAllItems, changePage
       </div>
       <div className={styles.ButtonSection}>
         <div className={styles.Timer}>8초 남음</div>
-        <button className={styles.CancelAllButton} onClick={openRemoveAllItemsModal}>전체 취소</button>
+        <button className={styles.CancelAllButton} onClick={openRemoveAllItemsModal}>
+          전체 취소
+        </button>
         <button className={styles.PaymentButton}>결제하기</button>
       </div>
       {isRemoveAllItemsModalOpen && (
         <RemoveAllItemsConfirmationModal closeModal={closeRemoveAllItemsModal} removeAllItems={removeAllItems} />
       )}
+      {isPaymentModalOpen && (
+        <PaymentSelectionModal
+          closeModal={closePaymentSelectionModal}
+          selectCardPayment={selectCardPayment}
+          selectCashPayment={selectCashPayment}
+        />
+      )}
     </section>
   );
 }
-
 interface CartItemProps {
   id: number;
   name: string;
@@ -93,7 +115,7 @@ function RemoveAllItemsConfirmationModal({ closeModal, removeAllItems }: RemoveA
   return (
     <Modal closeModal={closeModal}>
       <>
-        <div>장바구니에 담긴 상품 모두 삭제하시겠습니까?</div>
+        <div className={styles.ModalContent}>장바구니에 담긴 상품 모두 삭제하시겠습니까?</div>
         <div className={styles.ButtonContainer}>
           <button className={styles.ConfirmButton} onClick={handleConfirmButtonClick}>
             예
@@ -104,24 +126,5 @@ function RemoveAllItemsConfirmationModal({ closeModal, removeAllItems }: RemoveA
         </div>
       </>
     </Modal>
-  );
-}
-
-interface ModalProps {
-  closeModal: () => void;
-  children: JSX.Element;
-}
-
-function Modal({ closeModal, children }: ModalProps) {
-  return (
-    <div className={styles.ModalContainer}>
-      <div className={styles.Backdrop} onClick={closeModal}></div>
-      <div className={styles.Modal}>
-        <div className={styles.CloseButton} onClick={closeModal}>
-          X
-        </div>
-        <div className={styles.ModalContent}>{children}</div>
-      </div>
-    </div>
   );
 }
